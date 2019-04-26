@@ -8,8 +8,11 @@ const keys = require('../config/keys');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
-router.get('/test', (req,res) =>
- res.json({msg:"this is a test"}));
+router.get('/', (req, res) => {
+  User.find()
+      .then(users => res.json(users))
+      .catch(err => console.log(err))
+});
 
  router.post('/register', (req, res) => {
  

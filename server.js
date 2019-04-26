@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const users = require('./routes/users');
+const products = require('./routes/products');
 const cors = require('cors')
 const passport = require('passport');
 const app = express();
@@ -28,6 +29,7 @@ mongoose
 app.get('/', (req,res) => res.json({msg:"hello my name is"}));
 app.get('/about', (req,res) => res.send("Our company was founded in 2015"));
 app.use('/users', users);
+app.use('/products', products);
 
 app.get('/dashboard', passport.authenticate('jwt', {session:false}),(req,res) => {
   return res.json({
