@@ -6,7 +6,7 @@ const User = require('../models/User');
 const Product = require('../models/Product');
 
 
-router.post('/products', (req, res) => {
+router.post('/', (req, res) => {
     // Request validation
     if(!req.body) {
         
@@ -35,7 +35,7 @@ router.post('/products', (req, res) => {
 });
 
 
-router.get('/products', (req,res) =>{
+router.get('/', (req,res) =>{
     Product.find()
     .then(products => res.json(products))
     .catch(err => {
@@ -78,7 +78,7 @@ router.put('/:productId',(req, res) => {
 
     // Find and update product with the request body
     Product.findByIdAndUpdate(req.params.productId, {
-        title: req.body.title || "No product title", 
+        productName: req.body.productName || "No product title", 
         description: req.body.description,
         price: req.body.price,
         company: req.body.company
@@ -123,4 +123,3 @@ router.delete('/:productId', (req, res) => {
     });
 });
 module.exports = router;
-
