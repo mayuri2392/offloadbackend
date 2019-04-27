@@ -18,6 +18,7 @@ router.post('/', (req, res) => {
     // Create a Product
     const product = new Product({
         productName: req.body.productName || "No product title", 
+        image: req.body.image,
         description: req.body.description,
         price: req.body.price,
         company: req.body.company
@@ -79,6 +80,7 @@ router.put('/:productId',(req, res) => {
     // Find and update product with the request body
     Product.findByIdAndUpdate(req.params.productId, {
         productName: req.body.productName || "No product title", 
+        image: req.body.image,
         description: req.body.description,
         price: req.body.price,
         company: req.body.company
