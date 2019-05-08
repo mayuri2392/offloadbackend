@@ -17,11 +17,14 @@ router.post('/', (req, res) => {
 
     // Create a Product
     const product = new Product({
-        productName: req.body.productName || "No product title", 
-        image: req.body.image,
+        name: req.body.name || "No product title", 
         description: req.body.description,
         price: req.body.price,
-        company: req.body.company
+        gender: req.body.gender,
+        type: req.body.type,
+        img: req.body.img,
+        inCart: req.body.inCart,
+        category: req.body.category
     });
 
     // Save Product in the database
@@ -79,11 +82,14 @@ router.put('/:productId',(req, res) => {
 
     // Find and update product with the request body
     Product.findByIdAndUpdate(req.params.productId, {
-        productName: req.body.productName || "No product title", 
-        image: req.body.image,
+        name: req.body.name || "No product title", 
         description: req.body.description,
         price: req.body.price,
-        company: req.body.company
+        gender: req.body.gender,
+        type: req.body.type,
+        img: req.body.img,
+        inCart: req.body.inCart,
+        category: req.body.category
     }, {new: true})
     .then(product => {
         if(!product) {
